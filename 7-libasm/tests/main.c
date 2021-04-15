@@ -1,5 +1,13 @@
+# include <stdio.h>
+# include <unistd.h>
+# include <unistd.h>
 
-int	main(void)
+extern int ft_write(int a, char *s, int b);
+
+int main(void)
 {
-	return (0);
+	ft_write(1, "e", 1);
+
+	return 0;
 }
+

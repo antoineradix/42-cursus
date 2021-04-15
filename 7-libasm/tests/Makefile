@@ -1,26 +1,20 @@
 NAME			=	run_tests	
 
-CC				=	gcc
-
-FLAGS			=	-Wall -Wextra -Werror
+CC				=	clang
 
 SRCS			=	main.c
 
-OBJS			=	$(SRCS:.c=.o)
+LIBASM			=	../libasm.a
+
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	@$(CC) $(FLAGS) -o $(NAME) $(OBJS) -lm
+$(LIBASM):
+	@$(MAKE) all -C ../
 
-%.o: %.c
-	@$(CC) $(FLAGS) -o $@ -c $< -lm
+$(NAME): $(LIBASM)
+	@$(CC) $(SRCS) $(LIBASM) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJS)
-
-fclean: clean
 	@rm -f $(NAME)
-
-re: fclean all
-	@rm -f $(OBJS)
+	@make clean -C ../
