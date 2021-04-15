@@ -16,5 +16,5 @@ jobs:
                 sudo apt-get update
                 sudo apt-get install -y nasm
             - name: Debug
-              run: make test -C 7-libasm 
+              run: make -C 7-libasm 
 
