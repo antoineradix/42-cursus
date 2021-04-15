@@ -18,4 +18,4 @@ jobs:
       - name: Make Libasm test
         run: make -C ./7-libasm/test
       - name: Libasm test
-        run: ./7-libasm/test/run_test
+        run: ./7-libasm/test/libasm_test
