@@ -1,4 +1,4 @@
-NAME			=	yoo
+NAME			=	run_tests	
 
 CC				=	gcc
 
