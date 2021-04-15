@@ -14,7 +14,8 @@ jobs:
       - name: Install
         run: sudo apt-get update
       - name: Debug
+        sourcedir: ./test
         run: make
       - name: Check leaks
         run: |
-            ./yoo
+            ./test/yoo
