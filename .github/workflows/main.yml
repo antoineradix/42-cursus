@@ -2,9 +2,9 @@ name: libasm tester
 
 on:
   push:
-    branches: [ main ]
+    branches: [ current_project ]
   pull_request:
-    branches: [ main ]
+    branches: [ current_project ]
 
 strategy:
   matrix:
