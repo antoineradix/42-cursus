@@ -6,10 +6,16 @@ on:
   pull_request:
     branches: [ main ]
 
+strategy:
+  matrix:
+    compiler: [gcc, clang]
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - name: Debug
-       run: make && ./yoo
+      - uses: actions/checkout@v1
+      - name: Run CMake
+        env:
+          CC: ${{ matrix.compiler }}
+          run: make
