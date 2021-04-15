@@ -1,11 +1,10 @@
-NAME			=	run_tests	
+NAME			=	libasm_test
 
 CC				=	clang
 
 SRCS			=	main.c
 
 LIBASM			=	../libasm.a
-
 
 all: $(NAME)
 

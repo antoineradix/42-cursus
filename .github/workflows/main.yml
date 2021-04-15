@@ -15,7 +15,7 @@ jobs:
         run: |
             #sudo apt-get update
             sudo apt-get install -y nasm
-      - name: Debug
-        run: make -C ./7-libasm//tests/
-      - name: Test
-        run: ./7-libasm/tests/run_tests
+      - name: Make Libasm test
+        run: make -C ./7-libasm/test
+      - name: Libasm test
+        run: ./7-libasm/test/run_test
