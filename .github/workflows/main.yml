@@ -1,0 +1,20 @@
+name: libasm tester
+
+on: 
+    push:
+        branches: [ current_project ]
+    pull_request:
+        branches: [ current_project ]
+
+jobs:
+    build:
+        runs-on: ubuntu-lastest
+        steps:
+            - use: actions/checkout@v2
+            - name: Install
+              run: |
+                sudo apt-get update
+                sudo apt-get install -y nasm
+            - name: Debug
+              run: make test -C 7-libasm 
+
