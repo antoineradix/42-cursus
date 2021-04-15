@@ -1,4 +1,4 @@
-name: libft tester
+name: libasm tester
 
 on:
   push:
@@ -12,9 +12,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Install
-        run: sudo apt-get update
-      - name: Debug
-        run: make -C ./test/
-      - name: Check leaks
         run: |
-            ./test/yoo
+            sudo apt-get update
+            sudo apt-get install -y nasm
+      - name: Debug
+        run: make -C ./7-libasm//tests/
+      - name: Test
+        run: ./7-libasm/tests/run_tests
