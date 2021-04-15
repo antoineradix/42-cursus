@@ -1,4 +1,4 @@
-name: libasm tester
+name: libft tester
 
 on:
   push:
@@ -6,16 +6,15 @@ on:
   pull_request:
     branches: [ current_project ]
 
-strategy:
-  matrix:
-    compiler: [gcc, clang]
-
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Run CMake
-        env:
-          CC: ${{ matrix.compiler }}
-          run: make
+      - uses: actions/checkout@v2
+      - name: Install
+        run: sudo apt-get update
+      - name: Debug
+        run: make
+      - name: Check leaks
+        run: |
+            ./yoo
