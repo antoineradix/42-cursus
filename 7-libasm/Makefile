@@ -6,7 +6,7 @@ FLAGS = -f elf64
 
 SRCS = ft_write.s
 
-OBJ_PATH = ./obj/
+OBJ_PATH = ./objs/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.s=.o))
 
 $(NAME): $(OBJ_PATH) $(OBJS)
