@@ -1,28 +1,19 @@
 # include <stdio.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <string.h>
+# include <errno.h>
 
 
 extern int ft_write(int a, char *s, int b);
-
-
-
-int	check_test(ret, ret_cmp, nb_test)
-{
-	if (ret != ret_cmp)
-	{
-		printf("Error test num %d\n", nb_test);
-		return 1;
-	}
-	return 0;
-}
+extern size_t ft_strlen(const char *s);
 
 int	call_write(int fd, char *content, int len)
 {
-	int ret = write(fd, content, len);
-	int ret_cmp = ft_write(fd, content, len);
-	if (ret == ret_cmp)
+	if (ft_write(fd, content, len) == write(fd, content, len))
+	{
 		return 0;
+	}
 	return 1;
 }
 
@@ -55,8 +46,46 @@ int	test_write(int nb_test)
 	//err += call_write(fd, "salut bg", 10);
 	close(fd);
 
-	printf("\n\b--->> ft_test:  %d / %d.\n", nb_test-err, nb_test);
-	return (1);
+	// Test 6
+	nb_test++;
+	write(1, NULL, 1);
+	int lol = errno;
+	ft_write(1, NULL, 1);
+	if (errno != lol) { 
+		printf("mdrr");
+		err++;
+	}
+
+	// Test 7
+	nb_test++;
+	ft_write(1, NULL, 1);
+	if (errno != 14)
+		err++;
+
+	printf("\n---> ft_write:  %d / %d.\n", nb_test-err, nb_test);
+	return 1;
+}
+
+int call_strlen(char *s)
+{
+	if ((ft_strlen(s)) == (strlen(s)))
+	{
+		return 0;
+	}
+	return 1;
+}
+
+
+int	test_strlen(int nb_test)
+{
+	int err = 0;
+
+	// Test 1
+	nb_test++;
+	err += call_strlen("Hello world");
+
+	printf("\n---> ft_strlen:  %d / %d.\n", nb_test-err, nb_test);
+	return 1;
 }
 
 int main(void)
@@ -64,7 +93,7 @@ int main(void)
 	int ret; 
 
 	ret = test_write(0);
-
-	return 0;
+	ret = test_strlen(0);
+	return -1;
 }
 

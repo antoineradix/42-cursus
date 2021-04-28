@@ -4,7 +4,8 @@ CC = nasm
 
 FLAGS = -f elf64
 
-SRCS = ft_write.s
+SRCS =	ft_write.s \
+		ft_strlen.s
 
 OBJ_PATH = ./objs/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.s=.o))
@@ -21,6 +22,7 @@ $(OBJ_PATH)%.o:%.s
 all : $(NAME)
 
 clean:
+	@rm -rf $(NAME)
 	@rm -rf $(OBJ_PATH)
 
 fclean: clean
