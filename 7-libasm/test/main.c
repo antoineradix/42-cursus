@@ -94,6 +94,6 @@ int main(void)
 
 	ret = test_write(0);
 	ret = test_strlen(0);
-	return 1;
+	return 0;
 }
 
