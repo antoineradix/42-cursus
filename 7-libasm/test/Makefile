@@ -17,3 +17,6 @@ $(NAME): $(LIBASM)
 clean:
 	@rm -f $(NAME)
 	@make clean -C ../
+
+re: clean all
+	

@@ -5,7 +5,9 @@ CC = nasm
 FLAGS = -f elf64
 
 SRCS =	ft_write.s \
-		ft_strlen.s
+		ft_strlen.s \
+		ft_read.s \
+		ft_strcmp.s
 
 OBJ_PATH = ./objs/
 OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.s=.o))

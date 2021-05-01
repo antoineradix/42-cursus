@@ -2,14 +2,13 @@ extern __errno_location
 global ft_strlen
 
 ft_strlen:
-	xor rax,rax		; initialisation de rax à 0
+	mov rax, 0
 
-_loop:
-	mov dl,[rdi + rax]	; dl contient le caractère quon vérifie
-	or dl,dl		; comparaison de dl avec 0
-	jz _ret			; si dl = 0, on arrête
-	inc rax			; on ajoute un à la longueur de la chaîne
-	jmp _loop		; on recommence pour le caractère suivant
+loop:
+	cmp byte[rdi + rax], 0
+	jz end
+	inc rax
+	jmp loop
 
-_ret:
+end:
 	ret

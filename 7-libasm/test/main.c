@@ -7,6 +7,9 @@
 
 extern int ft_write(int a, char *s, int b);
 extern size_t ft_strlen(const char *s);
+extern ssize_t ft_read(int fildes, void *buf, size_t nbyte);
+extern ssize_t ft_read(int fildes, void *buf, size_t nbyte);
+int ft_strcmp(const char *s1, const char *s2);
 
 int	call_write(int fd, char *content, int len)
 {
@@ -90,10 +93,18 @@ int	test_strlen(int nb_test)
 
 int main(void)
 {
-	int ret; 
+	/*ret = test_write(0);
+	ret = test_strlen(0);*/
 
-	ret = test_write(0);
-	ret = test_strlen(0);
+/*	char s[3];
+	int fd = open("f.txt",O_RDONLY);
+
+	ssize_t ret =read(1, s, 3);
+	printf("txt = %s\n, ret = %ld\n errnp = %d\n", s, ret, errno);*/
+
+	int lol = ft_strcmp("amdr", "md");
+	printf("%d\n", lol);
+
 	return 0;
 }
 
