@@ -16,6 +16,6 @@ jobs:
             #sudo apt-get update
             sudo apt-get install -y nasm
       - name: Make Libasm test
-        run: make -C ./7-libasm/test
+        run: make test -C ./7-libasm
       - name: Libasm test
-        run: ./7-libasm/test/libasm_test
+        run: ./7-libasm/libasm_test

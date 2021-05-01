@@ -1,35 +1,50 @@
-NAME = libasm.a
+LIB 		= libasm.a
 
-CC = nasm
+NASM 		= nasm
 
-FLAGS = -f elf64
+NASM_FLAGS 	= -f elf64
 
-SRCS =	ft_write.s \
-		ft_strlen.s \
-		ft_read.s \
-		ft_strcmp.s
+LIB_SRCS 	=	ft_write.s \
+				ft_strlen.s \
+				ft_read.s \
+				ft_strcmp.s
 
-OBJ_PATH = ./objs/
-OBJS = $(addprefix $(OBJ_PATH), $(SRCS:.s=.o))
+OBJS_PATH	= ./objs/
 
-$(NAME): $(OBJ_PATH) $(OBJS)
-	@ar rcs $(NAME) $(OBJS)
+OBJS 		= $(addprefix $(OBJS_PATH), $(LIB_SRCS:.s=.o))
 
-$(OBJ_PATH):
-	@mkdir -p ${OBJ_PATH}
+TEST 		= libasm_test
 
-$(OBJ_PATH)%.o:%.s
-	@$(CC) $(FLAGS) $< -o $@
+CLANG 		= clang
 
-all : $(NAME)
+CLANG_FLAGS = -Wall -Wextra -Werror
+
+TEST_SRCS 	= test/main.c
+
+
+all : $(LIB)
+
+$(LIB): $(OBJS_PATH) $(OBJS)
+	@ar rcs $(LIB) $(OBJS)
+
+$(OBJS_PATH):
+	@mkdir -p ${OBJS_PATH}
+
+$(OBJS_PATH)%.o:%.s
+	@$(NASM) $(NASM_FLAGS) $< -o $@
 
 clean:
-	@rm -rf $(NAME)
-	@rm -rf $(OBJ_PATH)
+	@rm -rf $(LIB)
+	@rm -rf $(OBJS_PATH)
+	@rm -rf $(TEST)
 
 fclean: clean
-	@rm -rf $(NAME)
+	@rm -rf $(LIB)
+	@rm -rf $(TEST)
 
-re: fclean all
+re: fclean all	
+
+test: $(LIB)
+	@$(CLANG) $(CLANG_FLAGS) $(TEST_SRCS) $(LIB) -o $(TEST)
 
 .PHONY: all clean fclean re work
