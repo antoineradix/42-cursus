@@ -1,18 +1,18 @@
 global ft_strcmp
 
 ft_strcmp:
-	cmp byte[rdi], 0
-	je exit
-	cmp byte[rsi], 0
-	je exit
-	inc rdi
-	inc rsi
-	je ft_strcmp
+	cmp byte [rdi], 0
+	jz end
+	cmp byte [rsi], 0
+	jz end
+	cmpsb
+	jz ft_strcmp
 	dec rdi
 	dec rsi
+	jz end
 
-exit:
-	movzx rax, byte[rdi]
-	movzx rcx, byte[rsi]
-	sub	rax, rcx
+end:
+	movzx rax, byte [rdi]
+	movzx rcx, byte [rsi]
+	sub		rax, rcx
 	ret
