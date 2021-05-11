@@ -1,4 +1,4 @@
-#include "header.h"
+#include "test.h"
 
 bool	test_strlen(int nb_test) {
 	const int expected_nb_test = 3;
@@ -12,7 +12,7 @@ bool	test_strlen(int nb_test) {
 		nb_test++;
 
 	/* --- Test 3 --- */
-	if (ft_strlen("looool") != strlen("q"))
+	if (ft_strlen("loobdfb3534645u0000000ool") != strlen("q"))
 		nb_test++;
 
 	return (nb_test == expected_nb_test) ? 1 : 0;

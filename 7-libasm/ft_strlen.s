@@ -1,4 +1,3 @@
-extern __errno_location
 global ft_strlen
 
 ft_strlen:

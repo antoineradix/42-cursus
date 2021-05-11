@@ -1,4 +1,4 @@
-#include "header.h"
+#include "test.h"
 
 static char *new_str(int len) {
 	char *s;
@@ -12,7 +12,7 @@ static char *new_str(int len) {
 }
 
 bool		test_strcpy(int nb_test) {
-	const int expected_nb_test = 2;
+	const int expected_nb_test = 3;
 	char *s1;
 
 	/* --- Test 1 --- */
@@ -28,6 +28,14 @@ bool		test_strcpy(int nb_test) {
 		return -1;
 	s1 = ft_strcpy(s1, "a0a");
 	if (strcmp(s1, "a0a") == 0)
+		nb_test++;
+	free(s1);
+
+	/* --- Test 3 --- */
+	 if (!(s1 = new_str(20)))
+		return -1;
+	s1 = ft_strcpy(s1, "");
+	if (strcmp(s1, "") == 0)
 		nb_test++;
 	free(s1);
 

@@ -1,4 +1,4 @@
-#include "header.h"
+#include "test.h"
 
 bool	test_strcmp(int nb_test) {
 	const int expected_nb_test = 6;

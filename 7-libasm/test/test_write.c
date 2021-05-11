@@ -1,4 +1,4 @@
-#include "header.h"
+#include "test.h"
 
 bool	test_write(int nb_test) {
 	const int expected_nb_test = 3;
@@ -7,12 +7,27 @@ bool	test_write(int nb_test) {
 	int ret1;
 	int ret2;
 
-	if (!(fd = open("file.txt", O_WRONLY)))
+	if (!(fd = open("test/file.txt", O_WRONLY)))
 		return (-1);	
 	
 	/* --- Test 1 --- */
-	if (write(fd, "Hello\n", 6) == ft_write(fd, "Hello", 6))
+	if (write(fd, "Hello\n", 6) == ft_write(fd, "Hello\n", 6))
 		nb_test++;
+
+	/* --- Test 2 --- */
+	if (write(fd, "0\n", 2) == ft_write(fd, "0\n", 2))
+		nb_test++;
+
+	/* --- Test 1 --- */
+	if (write(fd, "0\n", 1) == ft_write(fd, "Hello\n", 6))
+		nb_test++;
+
+
+	/* --- Test 1 --- */
+	if (write(fd, "Hello\n", 6) == ft_write(fd, "Hello\n", 6))
+		nb_test++;
+
+
 
 	/* --- Test 2 --- */
 	ret1 = write(fd, NULL, 1);
@@ -20,9 +35,9 @@ bool	test_write(int nb_test) {
 	ret2 = ft_write(fd, NULL, 1);	
 	if (errno == errrno_tmp && ret1 == ret2)
 		nb_test++;
+	close(fd);
 
 	/* --- Test 3 --- */
-	close(fd);
 	fd = 42;
 	ret1 = write(fd, "Lol\n", 3);
 	errrno_tmp = errno;

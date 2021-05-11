@@ -14,5 +14,5 @@ ft_strcmp:
 end:
 	movzx rax, byte [rdi]
 	movzx rcx, byte [rsi]
-	sub		rax, rcx
+	sub	rax, rcx
 	ret

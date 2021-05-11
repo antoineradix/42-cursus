@@ -1,23 +1,35 @@
 LIB 		=	libasm.a
+
 NASM 		=	nasm
+
 NASM_FLAGS 	=	-f elf64
-LIB_SRCS 	=	ft_write.s \
-				ft_strlen.s \
-				ft_read.s \
+
+LIB_SRCS 	=	ft_strlen.s \
+				ft_strcpy.s \
 				ft_strcmp.s \
-				ft_strcpy.s
+				ft_write.s \
+				ft_read.s \
+				ft_strdup.s
+
 OBJS_PATH	=	./objs/
+
 OBJS 		=	$(addprefix $(OBJS_PATH), $(LIB_SRCS:.s=.o))
 
 TEST 		=	libasm_test
+
 CLANG 		=	clang
+
 CLANG_FLAGS =	-Wall -Wextra -Werror
+
 TEST_SRCS 	=	./test/main.c \
 				./test/test_write.c \
 				./test/test_strcmp.c \
 				./test/test_strlen.c \
-				./test/test_strcpy.c
+				./test/test_strcpy.c \
+				./test/test_strdup.c
+
 TEST_OBJS	=	$(TEST_SRCS:.c=.o)
+
 TEST_PATH	=	./test/
 
 all : $(LIB)
